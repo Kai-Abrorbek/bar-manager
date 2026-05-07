@@ -20,9 +20,7 @@ public class Staff {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private Double hourlyRate;
-
     private String accountNumber;
     private String phone;
     private String bank;
