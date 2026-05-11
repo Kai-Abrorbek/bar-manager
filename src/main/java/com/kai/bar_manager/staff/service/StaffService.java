@@ -2,6 +2,7 @@ package com.kai.bar_manager.staff.service;
 
 import com.kai.bar_manager.Jwt.JwtUtil;
 import com.kai.bar_manager.staff.dto.AuthRequest;
+import com.kai.bar_manager.staff.dto.AuthResponse;
 import com.kai.bar_manager.staff.dto.StaffRequest;
 import com.kai.bar_manager.staff.entity.Staff;
 import com.kai.bar_manager.staff.entity.StaffAuth;
@@ -22,22 +23,6 @@ public class StaffService {
     private final StaffRepository staffRepository;
     private  final PasswordEncoder passwordEncoder;
     private  final StaffAuthRepository staffAuthRepository;
-    private final JwtUtil jwtUtil;
-
-    @Transactional
-    public String staffLogin(AuthRequest authRequest){
-        StaffAuth staffAuth = staffAuthRepository.findByUserName(authRequest.getName());
-        if(staffAuth == null){
-            throw new RuntimeException("존재하지 않는 이름입니다.");
-        }
-
-        if(!passwordEncoder.matches(authRequest.getPassword(), staffAuth.getUserPassword())){
-            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
-        }
-
-        return jwtUtil.generateToken(staffAuth.getUserName());
-    }
-
 
     @Transactional
     public Staff createStaff(StaffRequest request) {

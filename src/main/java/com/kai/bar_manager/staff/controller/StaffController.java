@@ -2,6 +2,7 @@ package com.kai.bar_manager.staff.controller;
 
 import com.kai.bar_manager.common.AdminOnly;
 import com.kai.bar_manager.staff.dto.AuthRequest;
+import com.kai.bar_manager.staff.dto.AuthResponse;
 import com.kai.bar_manager.staff.dto.StaffRequest;
 import com.kai.bar_manager.staff.entity.Staff;
 import com.kai.bar_manager.staff.entity.StaffAuth;
@@ -21,12 +22,7 @@ public class StaffController {
 
     private final StaffService staffService;
 
-    @PostMapping("/auth/login")
-    public ResponseEntity<String> staffLogin(@RequestBody @Valid AuthRequest authRequest){
-        return ResponseEntity.ok(staffService.staffLogin(authRequest));
-    }
-
-//    @AdminOnly
+    @AdminOnly
     @PostMapping
     public ResponseEntity<Staff> createStaff(@RequestBody @Valid StaffRequest request) {
         return ResponseEntity.ok(staffService.createStaff(request));
