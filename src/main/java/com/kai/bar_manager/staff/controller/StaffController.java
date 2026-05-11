@@ -26,7 +26,7 @@ public class StaffController {
         return ResponseEntity.ok(staffService.staffLogin(authRequest));
     }
 
-    @AdminOnly
+//    @AdminOnly
     @PostMapping
     public ResponseEntity<Staff> createStaff(@RequestBody @Valid StaffRequest request) {
         return ResponseEntity.ok(staffService.createStaff(request));

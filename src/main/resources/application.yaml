@@ -17,3 +17,7 @@ spring:
 
 server:
   port: 8081
+
+excel:
+  template-path: src/main/resources/templates/일마감_템플릿.xlsx
+  output-path: storage/excel/
